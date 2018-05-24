@@ -21,14 +21,31 @@ io.on('connection',(socket)=>{
 		text : 'Hello! How are You?',
 		createdAt : 12345
 	});*/
+	socket.emit('welcoming',{
+		from : 'Admin',
+		text : 'Welcome to site',
+		createdAt : new Date().getTime()
+	});
+
+	socket.broadcast.emit('newMessage',{
+			from : 'Admin',
+			text : 'New User Joined',
+			createdAt : new Date().getTime()
+	});
 
 	socket.on('createMessage',(message)=>{
 		console.log('Message',message);
-		io.emit('newMessage',{
+		/*io.emit('newMessage',{
 			from : message.from,
 			text : message.text,
 			createdAt : new Date().getTime()  
-		});
+		});*/
+
+		/*socket.broadcast.emit('newMessage',{
+			from : message.from,
+			text : message.text,
+			createdAt : new Date().getTime()
+		});*/
 	});
 
 	socket.on('disconnect',()=>{

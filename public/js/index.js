@@ -13,6 +13,10 @@ socket.on('disconnect',function (){
 });
 
 
+socket.on('welcoming',function(message){
+	console.log('Welcoming Message : ',message);
+})
+
 socket.on('newMessage',function(message){
 	console.log('New Message',message);
 })
